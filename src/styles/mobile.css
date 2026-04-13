@@ -123,10 +123,10 @@
     padding-right: 16px;
   }
 
-  /* Garante que o scroll no eixo vertical (Y) mexa a página inteira 
+  /* Garante que o scroll no eixo vertical (Y) mexa a página inteira e o X role as colunas 
      se não houver delay acionado de Draggable */
   .column-content {
-    touch-action: pan-y;
+    touch-action: pan-x pan-y;
   }
 
   .kanban-column .task-card {
