@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTasks } from '../../contexts/TaskContext';
 import type { Task, TaskStatus } from '../../types';
 import { TaskCard } from '../TaskCard';
-import { DndContext, closestCorners, useDroppable, DragOverlay } from '@dnd-kit/core';
+import { DndContext, closestCorners, useDroppable, DragOverlay, useSensor, useSensors, MouseSensor, TouchSensor } from '@dnd-kit/core';
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -104,8 +104,14 @@ export function TaskBoard({ onTaskClick }: { onTaskClick: (task: Task) => void }
 
   const activeTask = activeId ? tasks.find(t => t.id === activeId) : null;
 
+  const sensors = useSensors(
+    useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 250, tolerance: 5 } })
+  );
+
   return (
     <DndContext 
+      sensors={sensors}
       collisionDetection={closestCorners} 
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}

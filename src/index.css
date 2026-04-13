@@ -4,6 +4,7 @@
 @import './styles/dashboard.css';
 @import './styles/views.css';
 @import './styles/drawer.css';
+@import './styles/mobile.css';
 
 :root {
   --primary-color: #000039;

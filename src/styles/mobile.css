@@ -1,0 +1,116 @@
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Layout adjustments */
+  .app-layout {
+    flex-direction: column;
+    height: 100dvh;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .sidebar .logo-container {
+    margin-bottom: 0;
+  }
+
+  .sidebar .nav-menu {
+    flex-direction: row;
+    padding-top: 0;
+    gap: 12px;
+  }
+
+  .main-content {
+    padding: 16px;
+    height: calc(100vh - 60px); 
+    /* Ensures scrolling only inside main container */
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .header-actions {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .view-toggle {
+    flex: 1;
+    display: flex;
+  }
+
+  .view-toggle button {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Dashboard */
+  .dashboard-grid {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stat-card {
+    flex: 1 1 40%;
+    min-width: 130px;
+    padding: 16px;
+  }
+
+  /* List View */
+  .list-filters {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filter-input {
+    width: 100%;
+  }
+
+  /* Kanban Board */
+  .task-board {
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0px;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .kanban-column {
+    min-width: 85vw;
+    scroll-snap-align: center;
+    flex: 0 0 85vw;
+  }
+
+  /* Drawer / Modal */
+  .drawer-content {
+    width: 100% !important;
+    right: 0;
+  }
+
+  .drawer-footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .drawer-footer button {
+    width: 100%;
+  }
+
+  /* Mobile interaction helper */
+  .task-card {
+    touch-action: manipulation;
+  }
+}
