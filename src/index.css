@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import './styles/components.css';
+@import './styles/layout.css';
+@import './styles/dashboard.css';
+@import './styles/views.css';
+@import './styles/drawer.css';
+
+:root {
+  --primary-color: #000039;
+  --secondary-color: #00af1a;
+  
+  --bg-main: #F7F8FA;
+  --bg-card: #FFFFFF;
+  --bg-secondary: #F1F4F8;
+  
+  --text-main: #111827;
+  --text-secondary: #6B7280;
+  
+  --border-color: #E5E7EB;
+  
+  --hover-primary: #11115A;
+  
+  --primary-soft: rgba(0, 0, 57, 0.08);
+  --secondary-soft: rgba(0, 175, 26, 0.08);
+
+  --purple-soft: #F3E8FF;
+  --purple-main: #7E22CE;
+  
+  --brown-soft: #FDF1E6;
+  --brown-main: #9A3412;
+  
+  /* Status Colors */
+  --status-red: #EF4444;
+  --status-orange: #F59E0B;
+  --status-green: var(--secondary-color);
+  
+  --status-red-soft: #FEF2F2;
+  --status-orange-soft: #FFFBEB;
+  --status-green-soft: #F0FDF4;
+  
+  /* Tag Colors */
+  --tag-criacao: #F59E0B;
+  --tag-estruturacao: #6366F1;
+  --tag-planejamento: #06B6D4;
+  --tag-design: #EC4899;
+  --tag-automacao: #10B981;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s ease;
+}
+
+input, textarea {
+  font-family: inherit;
+}
+
+/* Base App Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Utilities */
+.text-primary {
+  color: var(--primary-color);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
