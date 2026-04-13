@@ -4,7 +4,7 @@ import type { Task, TaskStatus } from '../../types';
 import { TaskCard } from '../TaskCard';
 import { DndContext, closestCorners, useDroppable, DragOverlay, useSensor, useSensors, MouseSensor, TouchSensor } from '@dnd-kit/core';
 import type { DragEndEvent, DragStartEvent } from '@dnd-kit/core';
-import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { SortableContext, useSortable, rectSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 const COLUMNS: TaskStatus[] = ['Não iniciado', 'Em andamento', 'Finalizada'];
@@ -23,7 +23,8 @@ function SortableTaskItem({ task, onClick }: ItemProps) {
     transform: CSS.Transform.toString(transform),
     transition,
     opacity: isDragging ? 0.3 : 1,
-    cursor: isDragging ? 'grabbing' : 'pointer'
+    cursor: isDragging ? 'grabbing' : 'pointer',
+    touchAction: 'manipulation'
   };
 
   return (
@@ -60,7 +61,7 @@ function KanbanColumn({ status, tasks, onTaskClick }: KanbanColProps) {
         </div>
       </div>
       <div className="column-content">
-        <SortableContext items={tasks.map(t => t.id)} strategy={verticalListSortingStrategy}>
+        <SortableContext items={tasks.map(t => t.id)} strategy={rectSortingStrategy}>
           {tasks.map(task => (
             <SortableTaskItem key={task.id} task={task} onClick={onTaskClick} />
           ))}

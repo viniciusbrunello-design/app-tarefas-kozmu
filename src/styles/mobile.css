@@ -31,8 +31,10 @@
     padding: 8px 12px;
   }
 
+  /* Retiramos gap lateral do main-content para que as trilhas transbordem, 
+     mas readicionamos nos elementos que não rolam lateralmente */
   .main-content {
-    padding: 16px;
+    padding: 16px 0; 
     height: calc(100dvh - 65px); 
     overflow-y: auto;
     overflow-x: hidden;
@@ -43,6 +45,7 @@
     align-items: flex-start;
     gap: 16px;
     margin-bottom: 16px;
+    padding: 0 16px; /* compensando o container pai */
   }
 
   .header-actions {
@@ -71,6 +74,7 @@
   .mini-dashboard {
     flex-wrap: wrap;
     gap: 12px;
+    padding: 0 16px;
   }
 
   .stat-card {
@@ -79,30 +83,63 @@
     padding: 12px 16px;
   }
 
-  /* Kanban Board Configuration Horizontal Swipe */
+  /* Kanban Board Mobile Layout - Stacked columns with horizontal task scroll */
   .task-board {
-    overflow-x: auto;
-    padding-bottom: 16px;
-    margin-right: -16px; /* Edge to edge scroll */
-    padding-right: 16px;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 0px;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    -webkit-overflow-scrolling: touch;
-    width: auto;
+    flex-direction: column;
+    padding-bottom: 32px;
+    align-items: stretch;
+    width: 100%;
+    gap: 24px;
   }
 
   .kanban-column {
-    min-width: 85vw;
+    min-width: 100%;
+    width: 100%;
+    flex: none;
+    padding: 0;
+    background-color: transparent; 
+    border-radius: 0;
+  }
+
+  .kanban-column.drop-target {
+    background-color: var(--bg-secondary);
+  }
+
+  .column-header {
+    padding: 0 16px;
+  }
+
+  .column-content {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 16px;
+    padding-bottom: 16px;
+    padding-top: 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Garante que o scroll no eixo vertical (Y) mexa a página inteira 
+     se não houver delay acionado de Draggable */
+  .column-content {
+    touch-action: pan-y;
+  }
+
+  .kanban-column .task-card {
+    flex: 0 0 80vw; /* largura boa da tarefa */
+    max-width: 340px;
     scroll-snap-align: center;
-    flex: 0 0 85vw;
   }
 
   /* List View */
   .list-filters {
     flex-direction: column;
     gap: 12px;
+    padding: 0 16px;
   }
 
   .filter-input {
@@ -111,6 +148,11 @@
 
   .list-grid {
     grid-template-columns: 1fr;
+    padding: 0 16px;
+  }
+
+  .empty-state {
+    margin: 0 16px;
   }
 
   /* Drawer / Modal */
@@ -124,12 +166,16 @@
 
   .drawer-body {
     padding: 20px;
+    padding-bottom: 60px; /* Mais folga */
   }
 
   .drawer-actions {
     flex-direction: column;
     gap: 12px;
     width: 100%;
+    /* Env safe area levanta margem de botões da barra nativa do iphone */
+    padding-bottom: env(safe-area-inset-bottom, 32px); 
+    margin-bottom: 24px; 
   }
 
   .drawer-actions button {
